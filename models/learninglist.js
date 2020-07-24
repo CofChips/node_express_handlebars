@@ -1,11 +1,16 @@
 const orm = require("../config/orm.js");
 
 const learningList = {
-    all: function(cb) {
-        orm.selectAll("list", function(res) {
-          cb(res);
-        });
-      },
+  all: function (cb) {
+    orm.selectAll("list", function (res) {
+      cb(res);
+    });
+  },
+  update: function (objColVals, condition, cb) {
+    orm.updateOne("list", objColVals, condition, function (res) {
+      cb(res);
+    });
+  }
 };
 
 module.exports = learningList;
