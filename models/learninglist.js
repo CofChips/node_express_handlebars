@@ -10,7 +10,12 @@ const learningList = {
     orm.updateOne("list", objColVals, condition, function (res) {
       cb(res);
     });
-  }
+  },
+  insert: function(cols, vals, cb) {
+    orm.insertOne("list", cols, vals, function(res) {
+      cb(res);
+    });
+  },
 };
 
 module.exports = learningList;
