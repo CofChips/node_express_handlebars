@@ -1,38 +1,44 @@
 <div class="container fluid">
     <div class="row">
         <div class="col-12 text-center py-3">
-            <h1>List of Things to Learn</h1>
+            <header>
+                <h1 style="font-family: 'Permanent Marker', cursive;">List of Things to Teach My Child</h1>
+            </header>
+
         </div>
     </div>
+    {{!-- Lists to display things to learn and things already learned--}}
     <div class="row pt-5">
         <div class="col-6">
-            <h2>Things I Want to Learn</h2>
+            <h2 style="font-family: 'Indie Flower', cursive;">Things to Learn</h2>
             <ul class="list-group">
                 {{#each learningList}}
                 {{#unless mastered}}
-                <li class="list-group-item change-mastered" data-id="{{id}}">{{learn_name}}<button type="button"
-                        class="btn btn-dark float-right">Mastered</button></li>
+                <li class="list-group-item change-mastered" data-id="{{id}}">{{id}}. {{learn_name}}<button type="button"
+                        class="btn btn-dark float-right">Learned</button></li>
                 {{/unless}}
                 {{/each}}
             </ul>
         </div>
         <div class="col-6">
-            <h2>Things I Have Mastered</h2>
+            <h2 style="font-family: 'Indie Flower', cursive;">Things he/she has Already Learned</h2>
             <ul class="list-group">
                 {{#each learningList}}
                 {{#if mastered}}
-                <li class="list-group-item remove-mastered" aria-disabled="true" data-id="{{id}}">{{learn_name}}<button type="button"
-                        class="btn btn-light float-right">Remove</button></li>
+                <li class="list-group-item remove-mastered" aria-disabled="true" data-id="{{id}}">{{id}}.
+                    {{learn_name}}<button type="button" class="btn btn-secondary float-right">Remove</button></li>
                 {{/if}}
                 {{/each}}
             </ul>
         </div>
     </div>
+    {{!-- Form to input new things to learn --}}
     <div class="row pt-5">
         <div class="col-12 text-center py-3">
             <form class="create-form">
                 <div class="form-group w-50 align-center mx-auto">
-                    <label for="form">Input New Things to Learn Here</label>
+                    <label for="form" style="font-family: 'Indie Flower', cursive;">Input New Things to Learn
+                        Here</label>
                     <textarea class="form-control" id="form" rows="3" name="name"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

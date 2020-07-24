@@ -1,4 +1,3 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
   $(".change-mastered").on("click", function (event) {
     var id = $(this).data("id");
@@ -7,7 +6,7 @@ $(function () {
       mastered: true
     };
 
-    // Send the PUT request.
+    // Send the PUT request to update learned (mastered state)
     $.ajax("/api/list/" + id, {
       type: "PUT",
       data: newMasteredState
@@ -20,8 +19,8 @@ $(function () {
     );
   });
 
+  // POST request to add new items to learn
   $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newList = {
@@ -42,6 +41,7 @@ $(function () {
     );
   });
 
+  // DELETE request to remove an item
   $(".remove-mastered").on("click", function (event) {
     var id = $(this).data("id");
 

@@ -1,5 +1,6 @@
 const orm = require("../config/orm.js");
 
+// leverages orm to create different types of query requests
 const learningList = {
   all: function (cb) {
     orm.selectAll("list", function (res) {

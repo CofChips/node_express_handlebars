@@ -4,7 +4,7 @@ const router = express.Router();
 
 const learningList = require("../models/learninglist.js");
 
-// this is where the routes are located - functions from 'models' are used here
+// this is where the routes are located - queries from models are used here
 
 router.get("/", function (req, res) {
   learningList.all(function (data) {

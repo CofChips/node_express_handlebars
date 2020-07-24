@@ -1,11 +1,6 @@
 const connection = require("./connection.js");
 
-// function selectAll(){};
-
-// function insertOne(){};
-
-// function updateOne(){};
-
+// These functions help with formatting
 function printQuestionMarks(num) {
   var arr = [];
 
@@ -19,26 +14,23 @@ function printQuestionMarks(num) {
 function objToSql(ob) {
     var arr = [];
   
-    // loop through the keys and push the key/value as a string int arr
     for (var key in ob) {
       var value = ob[key];
-      // check to skip hidden properties
       if (Object.hasOwnProperty.call(ob, key)) {
-        // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
         if (typeof value === "string" && value.indexOf(" ") >= 0) {
           value = "'" + value + "'";
         }
-        // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-        // e.g. {sleepy: true} => ["sleepy=true"]
+
         arr.push(key + "=" + value);
       }
     }
   
-    // translate array of strings to a single comma-separated string
     return arr.toString();
   }
 
+  // Start of orm functions
 var orm = {
+  // for making a select all query
     selectAll: function(tableInput, cb) {
       var queryString = "SELECT * FROM " + tableInput + ";";
       connection.query(queryString, function(err, result) {
@@ -48,6 +40,7 @@ var orm = {
         cb(result);
       });
     },
+    // for making an update query
     updateOne: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
     
@@ -65,6 +58,7 @@ var orm = {
           cb(result);
         });
       },
+      // for making a query to add something into a table
       insertOne: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
     
@@ -85,6 +79,7 @@ var orm = {
         });
       },
 
+      // for making a query to delete something from the table
       deleteOne: function(tableInput, condition, cb) {
         var queryString = "DELETE FROM " + tableInput + " WHERE ";
         queryString += condition;
@@ -97,8 +92,5 @@ var orm = {
       },
 }
 
-// UPDATE list
-// SET mastered = 0
-// WHERE id = 1;
 
 module.exports = orm;
