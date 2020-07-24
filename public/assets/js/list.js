@@ -45,7 +45,7 @@ $(function () {
   $(".remove-mastered").on("click", function (event) {
     var id = $(this).data("id");
 
-    // Send the PUT request.
+    // Send the DELETE request.
     $.ajax("/api/list/" + id, {
       type: "DELETE",
     }).then(
