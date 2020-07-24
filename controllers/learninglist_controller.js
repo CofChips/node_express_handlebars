@@ -45,4 +45,18 @@ router.post("/api/list", function(req, res) {
   });
 });
 
+router.delete("/api/list/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
+
+  console.log("condition", condition);
+
+  learningList.delete(condition, function(result) {
+    // Send back the ID of the new quote
+    if(result.affectedRows>0){
+      return res.status(200).end();
+    }
+    res.status(404).end();
+  });
+});
+
 module.exports = router;

@@ -16,6 +16,11 @@ const learningList = {
       cb(res);
     });
   },
+  delete: function(vals, cb) {
+    orm.deleteOne("list", vals, function(res) {
+      cb(res);
+    });
+  }
 };
 
 module.exports = learningList;

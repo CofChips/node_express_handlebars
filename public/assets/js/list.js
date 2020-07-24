@@ -41,4 +41,19 @@ $(function () {
       }
     );
   });
+
+  $(".remove-mastered").on("click", function (event) {
+    var id = $(this).data("id");
+
+    // Send the PUT request.
+    $.ajax("/api/list/" + id, {
+      type: "DELETE",
+    }).then(
+      function () {
+        console.log("removed list item");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 })

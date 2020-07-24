@@ -83,7 +83,18 @@ var orm = {
           }
           cb(result);
         });
-      }
+      },
+
+      deleteOne: function(tableInput, condition, cb) {
+        var queryString = "DELETE FROM " + tableInput + " WHERE ";
+        queryString += condition;
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+      },
 }
 
 // UPDATE list

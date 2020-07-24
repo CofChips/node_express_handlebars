@@ -21,7 +21,7 @@
             <ul class="list-group">
                 {{#each learningList}}
                 {{#if mastered}}
-                <li class="list-group-item" aria-disabled="true" data-id="{{id}}">{{learn_name}}<button type="button"
+                <li class="list-group-item remove-mastered" aria-disabled="true" data-id="{{id}}">{{learn_name}}<button type="button"
                         class="btn btn-light float-right">Remove</button></li>
                 {{/if}}
                 {{/each}}
